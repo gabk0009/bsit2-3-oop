@@ -1,9 +1,19 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+import java.util.Scanner;
+
+public class TotalNumber {
     public static void main(String[] args) {
-    System.out.println("Hello world");
+        Scanner scanner = new Scanner(System.in);
 
+        int totalNumber = 0; 
+        for (int i = 1; i <= 5; i++) {
+            System.out.print("Enter number " + i + ": ");
+            
+            int enterNumber = scanner.nextInt(); 
+            totalNumber += enterNumber;        
         }
+        System.out.println("\nTotal Number: " + totalNumber);
 
+        scanner.close();
+            
+        }
 }
