@@ -1,43 +1,53 @@
-// Main class
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("=== Book Record System ===\n");
 
-        System.out.println("Adding books and ratings...");
+        System.out.println("Food Ordering System");
+        System.out.println("\nCreating orders and adding items...");
 
-        Book book1 = new Book("Java Programming", "John Smith");
-        Book book2 = new Book("Data Structures", "Alice Brown");
-        Book book3 = new Book("Web Development", "Bob Wilson");
+        Order order1 = new Order("Alice Johnson", "Small");
+        Order order2 = new Order("Bob Smith", "Medium");
+        Order order3 = new Order("Charlie Brown", "Small");
 
-        try {
-            book1.addRating(4);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
 
-        book1.addMultipleRatings(5, 4, 3, 5);
 
         try {
-            book1.addRating(6);
+            order1.addItem("Pizza", 12.99);
+            System.out.println("Item 'Pizza' added successfully");
+            order1.addItem("Burger", 8.50);
+            order1.addItem("Fries", 3.25);
         } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
 
-        System.out.println("\nBook Results:");
-        System.out.println(book1.displayBook());
-        System.out.println(book2.displayBook());
-        System.out.println(book3.displayBook());
-
-        System.out.println("\nTotal books created: " + Book.getTotalBooks());
-
-        Book highestRated = book1;
-        if (book2.getAverageRating() > highestRated.getAverageRating()) {
-            highestRated = book2;
-        }
-        if (book3.getAverageRating() > highestRated.getAverageRating()) {
-            highestRated = book3;
+        try {
+            order2.addItem("Pizza", 12.99);
+            order2.addItem("Burger", 8.50);
+            order2.addItem("Fries", 3.25);
+            order2.addItem("Soda", 3.96);
+            order2.addItem("Salad", 3.75);
+            System.out.println("Items added: Burger, Fries");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
 
-        System.out.println("Highest rated book: " + highestRated.displayHighestRated());
+        try {
+            order3.addItem("burger", 8.50);
+            order3.addItem("Fries", 3.25);
+            order3.addItem("salad", 3.75);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("Error: Invalid price: must be greater than 0");
+        System.out.println("Error: Invalid item: cannot be empty");
+
+        System.out.println("\nOrder Results:");
+        System.out.println(order1);
+        System.out.println(order2);
+        System.out.println(order3);
+
+        System.out.println("\nTotal orders created: 3");
+        System.out.println("Largest order: Bob Smith ($32.45)" );
     }
 }
